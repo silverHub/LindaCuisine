@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-side-menus ng-controller="WeekCtrl">
+
+    <!-- Center content -->
+    <ion-side-menu-content >
+      <ion-header-bar class="bar bar-dark">
+        <h1 class="title">Linda's cuisine assistant</h1>
+        <button class="button button-icon" ng-click="newWeek()">
+          <i class="icon ion-plus-circled"></i>
+        </button>
+      </ion-header-bar>
+      <ion-header-bar class="bar-subheader">
+        <h2 class="title">Weeks</h2>
+      </ion-header-bar>
+
+
+
+      
+      <ion-content class="pinky"> 
+        <ion-list>
+        <ion-item class="item-icon-right" ng-repeat="week in weeks">
+          {{week.start.year}}.{{week.start.month}}.{{week.start.day}}
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+      </ion-list>
+      </ion-content>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left" ng-controller="ClientListCtrl">
+      <ion-header-bar class="bar bar-dark">
+        
+        <!--
+        <button class="button button-icon" ng-click="toggleDeleteMode()">
+          <i class="icon ion-minus-circled"></i>
+        </button>
+        -->
+        <h1 class="title">Clients</h1>
+        <button class="button button-icon" ng-click="addClient()">
+          <i class="icon ion-plus-circled"></i>
+        </button>
+      </ion-header-bar>
+      <ion-content show-delete="shouldShowDelete"
+          can-swipe="listCanSwipe">
+        <ion-list>
+          <ion-item ng-repeat="client in clients">
+            <div>
+              <h2>   {{client.name}} </h2>
+              <p>    {{client.email}} </p>
+            </div>
+            <ion-delete-button class="ion-minus-circled"
+                       ng-click="clients.splice($index, 1)">
+            </ion-delete-button>
+          </ion-item>
+          
+          </ion-item>
+        </ion-list>
+      </ion-content>
+
+    </ion-side-menu>
+  </ion-side-menus>
+  
+  </body>
+</html>

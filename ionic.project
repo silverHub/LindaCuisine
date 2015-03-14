@@ -1,0 +1,12 @@
+{
+  "name": "LindaApp",
+  "app_id": "c453cf61",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
